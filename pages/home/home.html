@@ -12,42 +12,8 @@
     <ActionItem *ngIf="isSearching && tab === 'meudesconto'" (tap)="clearSearch()" icon="res://ic_clear_white" ios.systemIcon="14" ios.position="right"></ActionItem>
   </ActionBar>
 
-  <SideDrawer>
-    <StackLayout class="home-component home-page card-bg" translucentNavigationBar>
-      <GridLayout columns="*,2,*" rows="auto" class="tabs">
-        <StackLayout (tap)="tab = 'ganhometro'">
-          <Image *ngIf="tab === 'ganhometro'" src="res://ganhometro_color"></Image>
-          <Image *ngIf="tab !== 'ganhometro'" src="res://ganhometro"></Image>
-        </StackLayout>
-        <StackLayout col="2" (tap)="tab = 'meudesconto'">
-          <Image *ngIf="tab === 'meudesconto'" src="res://meu_desconto_color"></Image>
-          <Image *ngIf="tab !== 'meudesconto'" src="res://meu_desconto"></Image>
-        </StackLayout>
-
-      </GridLayout>
-      <GridLayout columns="*" rows="*,60" [backgroundColor]="offersBgColor">
-        <HomePageDiscountComponent [search]="componentSearch"></HomePageDiscountComponent>
-        <HomePageRewardsComponent *ngIf="tab === 'ganhometro'"></HomePageRewardsComponent>
-
-        <GridLayout (tap)="dismissPopUp()" *ngIf="popupImage" verticalAlignment="center" horizontalAlignment="center" padding="10%" rows="auto" cols="auto">
-          <Image verticalAlignment="center" horizontalAlignment="center" [src]="popupImage"></Image>
-        </GridLayout>
-
-        <GridLayout (swipe)="hideTutorial()" automationText="imgTutorial" (tap)="hideTutorial()" id="tutorial" style="opacity: 0" rows="*" cols="*" visibility="{{ tutorial ? 'visible' : 'collapsed' }}" style="background-color: white;">
-          <Image src="res://tutorial" stretch="fill" text-align="center"></Image>
-        </GridLayout>
-
-        <GridLayout height="30" verticalAlignment="bottom" rows="auto" cols="*,auto,*" class="network-status" visibility="{{ hasConnection ? 'collapsed' : 'visible' }}">
-          <Label col="1" text="Sem conexão" vertical-align="center"></Label>
-        </GridLayout>
-
-        <GridLayout height="20" verticalAlignment="bottom" rows="auto" cols="*,auto,*" class="environment-sticker" *ngIf="isHmlBuild">
-          <Label col="1" text="{{ isHmlBuild ? 'API HOMOLOGAÇÃO' : 'API PRODUÇÃO' }}" vertical-align="center"></Label>
-        </GridLayout>
-
-        <Menu></Menu>
-      </GridLayout>
-    </StackLayout>
-  </SideDrawer>
+  <GridLayout height="30" verticalAlignment="bottom" rows="auto" cols="*,auto,*" class="network-status" visibility="{{ hasConnection ? 'collapsed' : 'visible' }}">
+	  <Label col="1" text="Sem conexão" vertical-align="center"></Label>
+	</GridLayout>
 
 </router-outlet>
